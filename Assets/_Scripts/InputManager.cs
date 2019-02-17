@@ -28,4 +28,13 @@ public class InputManager : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
     }
+
+    public static float GetSprint()
+    {
+        if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            return 1;
+        }
+        return 0;
+    }
 }

@@ -6,12 +6,15 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector3 moveVector;
     private Vector3 lookTarget;
+    private float moveSpeed = 8;
+    private float sprint;
 
     private void Update()
     {
         PlayerRotate();
         if(InputManager.horizontalInput!=0 || InputManager.verticalInput != 0)
         {
+            sprint = InputManager.GetSprint();
             PlayerMove();
         }
         Debug.DrawRay(transform.position, transform.forward, Color.blue);
@@ -26,6 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerMove()
     {
         moveVector = new Vector3(InputManager.horizontalInput, 0, InputManager.verticalInput);
-        transform.Translate(moveVector * 8f * Time.deltaTime, Space.World);
+        transform.Translate(moveVector * moveSpeed * (sprint + 1f) * Time.deltaTime, Space.World);
     }
 }
