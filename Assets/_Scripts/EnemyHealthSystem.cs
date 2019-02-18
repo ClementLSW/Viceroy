@@ -1,19 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static DamagableInterface;
 
 public class EnemyHealthSystem : MonoBehaviour, IDamagable
 {
-    private Text hpDisplay;
+    private TextMeshProUGUI hpDisplay;
     [SerializeField] private float hp;
     private EnemyLootSystem els;
     
     // Start is called before the first frame update
     void Start()
     {
-        //hpDisplay.text = hp.ToString();
+        hpDisplay.SetText(hp.ToString());
         els = gameObject.GetComponent<EnemyLootSystem>();
     }
 
@@ -44,6 +45,6 @@ public class EnemyHealthSystem : MonoBehaviour, IDamagable
 
     public void UpdateHealthBar()
     {
-
+        hpDisplay.SetText(hp.ToString());
     }
 }

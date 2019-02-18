@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Slider playerHealthBar;
 
-    // Start is called before the first frame update
+    // Initializing stats
     void Start()
     {
         playerScore = 0;
@@ -22,8 +22,8 @@ public class PlayerStats : MonoBehaviour, IDamagable
         playerHealthBar.maxValue = playerMaxHealth;
         playerHealthBar.value = playerCurrentHealth;
     }
-
-    // Update is called once per frame
+    
+    // Every loop, playerStats checks health, score
     void Update()
     {
         CheckHealth();
@@ -50,6 +50,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     }
     #endregion
 
+    #region UI Update Stuff
     public void HealthBarUpdate()
     {
         playerHealthBar.value = playerCurrentHealth;
@@ -59,4 +60,5 @@ public class PlayerStats : MonoBehaviour, IDamagable
     {
         scoreText.SetText("Score : " + playerScore);
     }
+    #endregion
 }
