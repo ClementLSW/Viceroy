@@ -10,11 +10,13 @@ public class EnemyHealthSystem : MonoBehaviour, IDamagable
     private TextMeshProUGUI hpDisplay;
     [SerializeField] private float hp;
     private EnemyLootSystem els;
+    private Rigidbody rb;
     
     // Start is called before the first frame update
     void Start()
     {
-        hpDisplay.SetText(hp.ToString());
+        rb = GetComponent<Rigidbody>();
+        //hpDisplay.SetText(hp.ToString());
         els = gameObject.GetComponent<EnemyLootSystem>();
     }
 
@@ -43,8 +45,13 @@ public class EnemyHealthSystem : MonoBehaviour, IDamagable
         Debug.Log(gameObject.name + "'s HP Left: " + hp.ToString());
     }
 
+    public void ApplyPushForce(Vector3 force)
+    {
+        rb.AddForce(force);
+    }
+
     public void UpdateHealthBar()
     {
-        hpDisplay.SetText(hp.ToString());
+        //hpDisplay.SetText(hp.ToString());
     }
 }

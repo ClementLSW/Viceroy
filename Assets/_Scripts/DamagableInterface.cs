@@ -8,5 +8,6 @@ public class DamagableInterface : MonoBehaviour
     {
         void TakeDamage(float dmg);
         void CheckHealth();
+        void ApplyPushForce(Vector3 force);
     }
 }

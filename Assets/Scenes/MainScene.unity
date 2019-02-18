@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 125764045}
   - component: {fileID: 125764046}
   - component: {fileID: 125764047}
+  - component: {fileID: 125764048}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -268,6 +269,19 @@ MonoBehaviour:
   playerCurrentHealth: 0
   scoreText: {fileID: 1976889847}
   playerHealthBar: {fileID: 375087092}
+--- !u!114 &125764048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125764039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8563469d14ae74cbe176d6326944d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 5
 --- !u!1 &137414172
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +297,7 @@ GameObject:
   - component: {fileID: 137414173}
   - component: {fileID: 137414178}
   - component: {fileID: 137414179}
+  - component: {fileID: 137414180}
   m_Layer: 0
   m_Name: TargetingBoard 0
   m_TagString: Untagged
@@ -400,6 +415,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyType: 0
+--- !u!54 &137414180
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137414172}
+  serializedVersion: 2
+  m_Mass: 30
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +791,7 @@ GameObject:
   - component: {fileID: 767545322}
   - component: {fileID: 767545327}
   - component: {fileID: 767545328}
+  - component: {fileID: 767545329}
   m_Layer: 0
   m_Name: TargetingBoard 1
   m_TagString: Untagged
@@ -877,6 +909,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyType: 1
+--- !u!54 &767545329
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767545321}
+  serializedVersion: 2
+  m_Mass: 30
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &936989016
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2c23cd1770d294e87f2a3569748b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 125764039}
   cam: {fileID: 534669904}
 --- !u!4 &972295725
 Transform:
@@ -1316,6 +1365,7 @@ GameObject:
   - component: {fileID: 1246747134}
   - component: {fileID: 1246747139}
   - component: {fileID: 1246747140}
+  - component: {fileID: 1246747141}
   m_Layer: 0
   m_Name: TargetingBoard 2
   m_TagString: Untagged
@@ -1433,6 +1483,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyType: 2
+--- !u!54 &1246747141
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246747133}
+  serializedVersion: 2
+  m_Mass: 30
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1726358571
 GameObject:
   m_ObjectHideFlags: 0

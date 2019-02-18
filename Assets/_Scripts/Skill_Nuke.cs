@@ -6,31 +6,37 @@ using static SkillsInterface;
 
 public class Skill_Nuke : MonoBehaviour, ISkills
 {
-    [SerializeField] private float range = 5f;
+    [SerializeField] private float range = 500f;
 
     private bool coolDown;
     private float coolDownTimer = 10f;
     private float currentCD;
-    private float skillAmmo;
+    private int skillAmmo;
     private float maxSkillAmmo;
-    
+
     public void Activate()
     {
-        if (!coolDown && skillAmmo>0)
+        Debug.Log("Nuke");
+        if (!coolDown && skillAmmo > 0)
         {
             Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, range);
 
-            foreach(Collider c in hitColliders)
+            foreach (Collider c in hitColliders)
             {
-                IDamagable hitObj = c.gameObject.GetComponent<IDamagable>();
-                if (hitObj != null)
+                foreach (MonoBehaviour mb in c.gameObject.GetComponents<MonoBehaviour>())
                 {
-                    hitObj.TakeDamage(2f);
-                    c.GetComponent<Rigidbody>().AddForce((c.transform.position - gameObject.transform.position) * 5f);
-                }
-                Destroy(gameObject);
-            }
+                    if (mb is EnemyHealthSystem)
+                    {
+                        IDamagable hitObj = c.gameObject.GetComponent<IDamagable>();
+                        Vector3 pushForce = (mb.transform.position - gameObject.transform.position) * 5f;
 
+                        hitObj.TakeDamage(2f);
+                        hitObj.ApplyPushForce(pushForce);
+
+                        Debug.Log(c.gameObject.name);
+                    }
+                }
+            }
             coolDown = true;
             currentCD = coolDownTimer;
         }
@@ -39,9 +45,9 @@ public class Skill_Nuke : MonoBehaviour, ISkills
     // On Pickup call this
     public void AddSkillAmmo()
     {
-        if(skillAmmo < maxSkillAmmo)
+        if (skillAmmo < maxSkillAmmo)
         {
-            skillAmmo += 1;
+            skillAmmo++;
         }
     }
 
@@ -72,18 +78,17 @@ public class Skill_Nuke : MonoBehaviour, ISkills
     // Start is called before the first frame update
     void Start()
     {
-        skillAmmo = 0;
+        //coolDown = false;
+        //skillAmmo = 1000;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (coolDown) CheckCooldown();
-        UpdateUI();
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        
+        //if (coolDown)
+        //{
+        //    CheckCooldown();
+        //}
+        //UpdateUI();
     }
 }

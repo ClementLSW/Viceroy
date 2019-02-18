@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     public static float horizontalInput;
     public static float verticalInput;
 
@@ -11,11 +12,17 @@ public class InputManager : MonoBehaviour
     private Ray ray;
     public static RaycastHit hit;
 
+
     // Update is called once per frame
     void Update()
     {
         GetMousePosition();
         GetMovementInput();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            player.GetComponent<Skill_Nuke>().Activate();
+        }
     }
 
     private void GetMousePosition()
@@ -37,4 +44,5 @@ public class InputManager : MonoBehaviour
         }
         return 0;
     }
+    
 }
