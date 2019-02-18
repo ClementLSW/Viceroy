@@ -9,11 +9,11 @@ public class EnemyLootSystem : MonoBehaviour
     public void drop()
     {
         em = gameObject.GetComponent<EnemyManager>();
-        calculateDropScore();
-        calculateDropLoot();
+        CalculateDropScore();
+        CalculateDropLoot();
     }
 
-    void calculateDropScore()
+    void CalculateDropScore()
     {
         switch (em.EnemyType)
         {
@@ -29,12 +29,9 @@ public class EnemyLootSystem : MonoBehaviour
             case 3: PlayerStats.playerScore += 100;
                 break;
         }
-
-        //This is just for debug. Maybe in the future can call UpdateScore() in PlayerStats
-        Debug.Log("Score: " + PlayerStats.playerScore);
     }
 
-    void calculateDropLoot()
+    void CalculateDropLoot()
     {
         float rng = Random.Range(0, 9);
 
