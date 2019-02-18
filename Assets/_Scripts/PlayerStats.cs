@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static DamagableInterface;
 
 public class PlayerStats : MonoBehaviour, IDamagable
@@ -10,6 +11,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     private float playerMaxHealth;
     public float playerCurrentHealth;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private Slider playerHealthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,8 @@ public class PlayerStats : MonoBehaviour, IDamagable
         playerScore = 0;
         playerMaxHealth = 100;
         playerCurrentHealth = playerMaxHealth;
+        playerHealthBar.maxValue = playerMaxHealth;
+        playerHealthBar.value = playerCurrentHealth;
     }
 
     // Update is called once per frame
@@ -48,7 +52,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
 
     public void HealthBarUpdate()
     {
-        // Use playerCurrentHealth/playerMaxHealth to render healthbar
+        playerHealthBar.value = playerCurrentHealth;
     }
 
     public void ScoreUpdate()
