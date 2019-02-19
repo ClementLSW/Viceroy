@@ -6,8 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector3 moveVector;
     private Vector3 lookTarget;
-    private float moveSpeed = 8;
+    [SerializeField] private float moveSpeed = 8;
     private float sprint;
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -17,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
             sprint = InputManager.GetSprint();
             PlayerMove();
         }
-        Debug.DrawRay(transform.position, transform.forward, Color.blue);
+        //Debug.DrawRay(transform.position, transform.forward, Color.blue);
     }
 
     private void PlayerRotate()
@@ -29,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerMove()
     {
         moveVector = new Vector3(InputManager.horizontalInput, 0, InputManager.verticalInput);
-        transform.Translate(moveVector * moveSpeed * (sprint + 1f) * Time.deltaTime, Space.World);
+        rb.MovePosition(transform.position + (moveVector * moveSpeed * (sprint + 1f) * Time.deltaTime));
+        //transform.Translate(moveVector * moveSpeed * (sprint + 1f) * Time.deltaTime, Space.World);
     }
 }

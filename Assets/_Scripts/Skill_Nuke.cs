@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static DamagableInterface;
-using static SkillsInterface;
 
 public class Skill_Nuke : MonoBehaviour, ISkills
 {
@@ -25,7 +23,7 @@ public class Skill_Nuke : MonoBehaviour, ISkills
             {
                 foreach (MonoBehaviour mb in c.gameObject.GetComponents<MonoBehaviour>())
                 {
-                    if (mb is EnemyHealthSystem)
+                    if (mb is IDamagable && mb is IEnemy)
                     {
                         IDamagable hitObj = c.gameObject.GetComponent<IDamagable>();
                         Vector3 pushForce = (mb.transform.position - gameObject.transform.position) * 5f;
